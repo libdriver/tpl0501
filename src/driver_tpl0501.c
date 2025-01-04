@@ -50,8 +50,8 @@
 
 /**
  * @brief     write byte
- * @param[in] *handle points to a tpl0501 handle structure
- * @param[in] data is the set data
+ * @param[in] *handle pointer to a tpl0501 handle structure
+ * @param[in] data set data
  * @return    status code
  *            - 0 success
  *            - 1 spi write failed
@@ -72,7 +72,7 @@ static uint8_t a_tpl0501_spi_write(tpl0501_handle_t *handle, uint8_t data)
 
 /**
  * @brief     initialize the chip
- * @param[in] *handle points to a tpl0501 handle structure
+ * @param[in] *handle pointer to a tpl0501 handle structure
  * @return    status code
  *            - 0 success
  *            - 1 spi initialization failed
@@ -128,7 +128,7 @@ uint8_t tpl0501_init(tpl0501_handle_t *handle)
 
 /**
  * @brief     close the chip
- * @param[in] *handle points to a tpl0501 handle structure
+ * @param[in] *handle pointer to a tpl0501 handle structure
  * @return    status code
  *            - 0 success
  *            - 1 deinit failed
@@ -163,8 +163,8 @@ uint8_t tpl0501_deinit(tpl0501_handle_t *handle)
 
 /**
  * @brief     write data
- * @param[in] *handle points to a tpl0501 handle structure
- * @param[in] raw is the set data
+ * @param[in] *handle pointer to a tpl0501 handle structure
+ * @param[in] raw set data
  * @return    status code
  *            - 0 success
  *            - 1 write failed
@@ -198,11 +198,11 @@ uint8_t tpl0501_write(tpl0501_handle_t *handle, uint8_t raw)
 
 /**
  * @brief      convert the percentage to the register raw data
- * @param[in]  *handle points to a tpl0501 handle structure
- * @param[in]  percentage is the set percentage
- * @param[out] *reg points to a register raw buffer
- * @param[out] *wl_ohm points to a wl ohm buffer
- * @param[out] *hw_ohm points to a hw ohm buffer
+ * @param[in]  *handle pointer to a tpl0501 handle structure
+ * @param[in]  percentage set percentage
+ * @param[out] *reg pointer to a register raw buffer
+ * @param[out] *wl_ohm pointer to a wl ohm buffer
+ * @param[out] *hw_ohm pointer to a hw ohm buffer
  * @return     status code
  *             - 0 success
  *             - 2 handle is NULL
@@ -231,11 +231,11 @@ uint8_t tpl0501_percentage_convert_to_register(tpl0501_handle_t *handle,
 
 /**
  * @brief      convert the register raw data to percentage
- * @param[in]  *handle points to a tpl0501 handle structure
- * @param[in]  reg is the register raw data
- * @param[out] *percentage points to a percentage buffer
- * @param[out] *wl_ohm points to a wl ohm buffer
- * @param[out] *hw_ohm points to a hw ohm buffer
+ * @param[in]  *handle pointer to a tpl0501 handle structure
+ * @param[in]  reg register raw data
+ * @param[out] *percentage pointer to a percentage buffer
+ * @param[out] *wl_ohm pointer to a wl ohm buffer
+ * @param[out] *hw_ohm pointer to a hw ohm buffer
  * @return     status code
  *             - 0 success
  *             - 2 handle is NULL
@@ -264,8 +264,8 @@ uint8_t tpl0501_percentage_convert_to_data(tpl0501_handle_t *handle,
 
 /**
  * @brief     set the chip register
- * @param[in] *handle points to a tpl0501 handle structure
- * @param[in] raw is the set data
+ * @param[in] *handle pointer to a tpl0501 handle structure
+ * @param[in] raw set data
  * @return    status code
  *            - 0 success
  *            - 1 write failed
@@ -289,7 +289,7 @@ uint8_t tpl0501_set_reg(tpl0501_handle_t *handle, uint8_t raw)
 
 /**
  * @brief      get chip's information
- * @param[out] *info points to a tpl0501 info structure
+ * @param[out] *info pointer to a tpl0501 info structure
  * @return     status code
  *             - 0 success
  *             - 2 handle is NULL

@@ -98,48 +98,48 @@ typedef struct tpl0501_info_s
 
 /**
  * @brief     initialize tpl0501_handle_t structure
- * @param[in] HANDLE points to a tpl0501 handle structure
- * @param[in] STRUCTURE is tpl0501_handle_t
+ * @param[in] HANDLE pointer to a tpl0501 handle structure
+ * @param[in] STRUCTURE tpl0501_handle_t
  * @note      none
  */
 #define DRIVER_TPL0501_LINK_INIT(HANDLE, STRUCTURE)               memset(HANDLE, 0, sizeof(STRUCTURE))
 
 /**
  * @brief     link spi_init function
- * @param[in] HANDLE points to a tpl0501 handle structure
- * @param[in] FUC points to a spi_init function address
+ * @param[in] HANDLE pointer to a tpl0501 handle structure
+ * @param[in] FUC pointer to a spi_init function address
  * @note      none
  */
 #define DRIVER_TPL0501_LINK_SPI_INIT(HANDLE, FUC)                (HANDLE)->spi_init = FUC
 
 /**
  * @brief     link spi_deinit function
- * @param[in] HANDLE points to a tpl0501 handle structure
- * @param[in] FUC points to a spi_deinit function address
+ * @param[in] HANDLE pointer to a tpl0501 handle structure
+ * @param[in] FUC pointer to a spi_deinit function address
  * @note      none
  */
 #define DRIVER_TPL0501_LINK_SPI_DEINIT(HANDLE, FUC)              (HANDLE)->spi_deinit = FUC
 
 /**
  * @brief     link spi_write_cmd function
- * @param[in] HANDLE points to a tpl0501 handle structure
- * @param[in] FUC points to a spi_write_cmd function address
+ * @param[in] HANDLE pointer to a tpl0501 handle structure
+ * @param[in] FUC pointer to a spi_write_cmd function address
  * @note      none
  */
 #define DRIVER_TPL0501_LINK_SPI_WRITE_COMMAND(HANDLE, FUC)       (HANDLE)->spi_write_cmd = FUC
 
 /**
  * @brief     link delay_ms function
- * @param[in] HANDLE points to a tpl0501 handle structure
- * @param[in] FUC points to a delay_ms function address
+ * @param[in] HANDLE pointer to a tpl0501 handle structure
+ * @param[in] FUC pointer to a delay_ms function address
  * @note      none
  */
 #define DRIVER_TPL0501_LINK_DELAY_MS(HANDLE, FUC)                (HANDLE)->delay_ms = FUC
 
 /**
  * @brief     link debug_print function
- * @param[in] HANDLE points to a tpl0501 handle structure
- * @param[in] FUC points to a debug_print function address
+ * @param[in] HANDLE pointer to a tpl0501 handle structure
+ * @param[in] FUC pointer to a debug_print function address
  * @note      none
  */
 #define DRIVER_TPL0501_LINK_DEBUG_PRINT(HANDLE, FUC)             (HANDLE)->debug_print = FUC
@@ -157,7 +157,7 @@ typedef struct tpl0501_info_s
 
 /**
  * @brief      get chip's information
- * @param[out] *info points to a tpl0501 info structure
+ * @param[out] *info pointer to a tpl0501 info structure
  * @return     status code
  *             - 0 success
  *             - 2 handle is NULL
@@ -167,7 +167,7 @@ uint8_t tpl0501_info(tpl0501_info_t *info);
 
 /**
  * @brief     initialize the chip
- * @param[in] *handle points to a tpl0501 handle structure
+ * @param[in] *handle pointer to a tpl0501 handle structure
  * @return    status code
  *            - 0 success
  *            - 1 spi initialization failed
@@ -179,7 +179,7 @@ uint8_t tpl0501_init(tpl0501_handle_t *handle);
 
 /**
  * @brief     close the chip
- * @param[in] *handle points to a tpl0501 handle structure
+ * @param[in] *handle pointer to a tpl0501 handle structure
  * @return    status code
  *            - 0 success
  *            - 1 deinit failed
@@ -191,8 +191,8 @@ uint8_t tpl0501_deinit(tpl0501_handle_t *handle);
 
 /**
  * @brief     write data
- * @param[in] *handle points to a tpl0501 handle structure
- * @param[in] raw is the set data
+ * @param[in] *handle pointer to a tpl0501 handle structure
+ * @param[in] raw set data
  * @return    status code
  *            - 0 success
  *            - 1 write failed
@@ -204,11 +204,11 @@ uint8_t tpl0501_write(tpl0501_handle_t *handle, uint8_t raw);
 
 /**
  * @brief      convert the percentage to the register raw data
- * @param[in]  *handle points to a tpl0501 handle structure
- * @param[in]  percentage is the set percentage
- * @param[out] *reg points to a register raw buffer
- * @param[out] *wl_ohm points to a wl ohm buffer
- * @param[out] *hw_ohm points to a hw ohm buffer
+ * @param[in]  *handle pointer to a tpl0501 handle structure
+ * @param[in]  percentage set percentage
+ * @param[out] *reg pointer to a register raw buffer
+ * @param[out] *wl_ohm pointer to a wl ohm buffer
+ * @param[out] *hw_ohm pointer to a hw ohm buffer
  * @return     status code
  *             - 0 success
  *             - 2 handle is NULL
@@ -221,11 +221,11 @@ uint8_t tpl0501_percentage_convert_to_register(tpl0501_handle_t *handle,
 
 /**
  * @brief      convert the register raw data to percentage
- * @param[in]  *handle points to a tpl0501 handle structure
- * @param[in]  reg is the register raw data
- * @param[out] *percentage points to a percentage buffer
- * @param[out] *wl_ohm points to a wl ohm buffer
- * @param[out] *hw_ohm points to a hw ohm buffer
+ * @param[in]  *handle pointer to a tpl0501 handle structure
+ * @param[in]  reg register raw data
+ * @param[out] *percentage pointer to a percentage buffer
+ * @param[out] *wl_ohm pointer to a wl ohm buffer
+ * @param[out] *hw_ohm pointer to a hw ohm buffer
  * @return     status code
  *             - 0 success
  *             - 2 handle is NULL
@@ -249,8 +249,8 @@ uint8_t tpl0501_percentage_convert_to_data(tpl0501_handle_t *handle,
 
 /**
  * @brief     set the chip register
- * @param[in] *handle points to a tpl0501 handle structure
- * @param[in] raw is the set data
+ * @param[in] *handle pointer to a tpl0501 handle structure
+ * @param[in] raw set data
  * @return    status code
  *            - 0 success
  *            - 1 write failed
