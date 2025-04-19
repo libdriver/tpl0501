@@ -10,7 +10,7 @@
 
 The TPL0501 device is a single-channel, linear-taper, digital potentiometer with 256 wiper positions. This device can be used as a three-terminal potentiometer or as a two-terminal rheostat. The TPL0501 is currently offered with end-to-end resistance of 100 kΩ. The internal registers of the TPL0501 can be accessed using a SPI-compatible interface. The TPL0501 has a nominal temperature coefficient of 35 ppm/°C.
 
-LibDriver TPL0501 is the full function driver of TPL0501 launched by LibDriver.It provides digital potentiometer function. LibDriver is MISRA compliant.
+LibDriver TPL0501 is a full-featured driver of TPL0501 launched by LibDriver.It provides digital potentiometer function. LibDriver is MISRA compliant.
 
 ### Table of Contents
 
