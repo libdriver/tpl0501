@@ -104,7 +104,7 @@ uint8_t tpl0501_init(tpl0501_handle_t *handle)
     }
     if (handle->spi_write_cmd == NULL)                                  /* check spi_write_cmd */
     {
-        handle->debug_print("tpl0501: spi_write_cmd is null.\n");       /* spi_read_cmd is null */
+        handle->debug_print("tpl0501: spi_write_cmd is null.\n");       /* spi_write_cmd is null */
        
         return 3;                                                       /* return error */
     }
@@ -188,7 +188,7 @@ uint8_t tpl0501_write(tpl0501_handle_t *handle, uint8_t raw)
     res =a_tpl0501_spi_write(handle, raw);                          /* set data */
     if (res != 0)                                                   /* check result */
     {
-        handle->debug_print("tpl0501: read data failed.\n");        /* read data failed */
+        handle->debug_print("tpl0501: write data failed.\n");       /* write data failed */
        
         return 1;                                                   /* return error */
     }
