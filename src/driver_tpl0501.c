@@ -213,6 +213,8 @@ uint8_t tpl0501_percentage_convert_to_register(tpl0501_handle_t *handle,
                                                float percentage, uint8_t *reg,
                                                float *wl_ohm, float *hw_ohm)
 {
+    uint16_t code;
+    
     if (handle == NULL)                                 /* check handle */
     {
         return 2;                                       /* return error */
@@ -222,8 +224,24 @@ uint8_t tpl0501_percentage_convert_to_register(tpl0501_handle_t *handle,
         return 3;                                       /* return error */
     }
     
-    *reg = (uint8_t)(percentage / 100.0f * 256);        /* convert real data to register data */
-    *wl_ohm = 100 * 1000 * (percentage / 100.0f);       /* set wl ohm */
+    if (percentage < 0.0f)                              /* clamp to 0% */
+    {
+        percentage = 0.0f;                              /* set 0.0% */
+    }
+    if (percentage > 100.0f)                            /* clamp to 100% */
+    {
+        percentage = 100.0f;                            /* set 100.0% */
+    }
+
+    code = (uint16_t)(percentage / 
+                      100.0f * 256.0f + 0.5f);          /* convert code */
+    if (code > 255)                                     /* check max */
+    {
+        code = 255;                                     /* clamp to hardware max code 255 */
+    }
+    *reg = (uint8_t)code;
+    
+    *wl_ohm = 100 * 1000 * ((float)(*reg) / 256.0f);    /* set wl ohm  */
     *hw_ohm = 100 * 1000 - (*wl_ohm);                   /* set hw ohm */
     
     return 0;                                           /* success return 0 */
@@ -309,8 +327,8 @@ uint8_t tpl0501_info(tpl0501_info_t *info)
     info->supply_voltage_min_v = SUPPLY_VOLTAGE_MIN;                /* set minimal supply voltage */
     info->supply_voltage_max_v = SUPPLY_VOLTAGE_MAX;                /* set maximum supply voltage */
     info->max_current_ma = MAX_CURRENT;                             /* set maximum current */
-    info->temperature_max = TEMPERATURE_MAX;                        /* set minimal temperature */
-    info->temperature_min = TEMPERATURE_MIN;                        /* set maximum temperature */
+    info->temperature_max = TEMPERATURE_MAX;                        /* set maximum temperature */
+    info->temperature_min = TEMPERATURE_MIN;                        /* set minimal temperature */
     info->driver_version = DRIVER_VERSION;                          /* set driver version */
     
     return 0;                                                       /* success return 0 */
